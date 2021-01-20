@@ -1,0 +1,21 @@
+package com.velsol.mynotes.data
+
+import androidx.lifecycle.LiveData
+import androidx.room.*
+import com.velsol.mynotes.data.Note
+
+@Dao
+interface NoteDao {
+
+    @Insert
+    fun addNote(note : Note)
+
+    @Update
+    fun updateNote(note: Note)
+
+    @Delete
+    fun deleteNote(note: Note)
+
+    @Query("SELECT * FROM note")
+    fun getAllNotes(): LiveData<List<Note>>
+}
